@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using UnityEngine.Experimental.Rendering.Universal;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Platformer.Gameplay;
@@ -49,6 +50,7 @@ namespace Platformer.Mechanics
             collider2d = GetComponent<Collider2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();
             animator = GetComponent<Animator>();
+            
         }
 
         protected override void Update()
@@ -122,6 +124,8 @@ namespace Platformer.Mechanics
                 spriteRenderer.flipX = false;
             else if (move.x < -0.01f)
                 spriteRenderer.flipX = true;
+
+            GetComponent<Light2D>().pointLightOuterRadius = Mathf.Abs(move.x) * 2;
 
             animator.SetBool("grounded", IsGrounded);
             animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
