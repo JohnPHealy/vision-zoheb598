@@ -125,7 +125,7 @@ namespace Platformer.Mechanics
             else if (move.x < -0.01f)
                 spriteRenderer.flipX = true;
 
-            GetComponent<Light2D>().pointLightOuterRadius = Mathf.Abs(move.x) * 2;
+            GetComponent<Light2D>().pointLightOuterRadius = Mathf.Abs(move.x) * 4;
 
             animator.SetBool("grounded", IsGrounded);
             animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
